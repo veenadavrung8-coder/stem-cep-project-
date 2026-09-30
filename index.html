@@ -1,0 +1,75 @@
+<script>
+
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+}
+
+function closeMenu() {
+    document.getElementById("navMenu").classList.remove("show");
+}
+
+
+/* LOGIN AND SAVE USER DATA */
+
+function loginUser() {
+
+    let name = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("loginMessage");
+
+    if (name === "" || email === "") {
+
+        message.innerHTML =
+            "⚠️ Please enter your name and email.";
+
+        message.style.color = "red";
+
+        return;
+    }
+
+    /* Save user information */
+
+    let userData = {
+        name: name,
+        email: email,
+        loginTime: new Date().toLocaleString()
+    };
+
+    localStorage.setItem(
+        "stemUser",
+        JSON.stringify(userData)
+    );
+
+    message.innerHTML =
+        "✅ Welcome, " + name + "! Your data has been saved.";
+
+    message.style.color = "green";
+
+    /* Clear input boxes */
+
+    document.getElementById("username").value = "";
+    document.getElementById("email").value = "";
+
+}
+
+
+/* CHECK IF USER IS ALREADY SAVED */
+
+window.onload = function() {
+
+    let savedUser = localStorage.getItem("stemUser");
+
+    if (savedUser) {
+
+        let userData = JSON.parse(savedUser);
+
+        document.getElementById("loginMessage").innerHTML =
+            "👋 Welcome back, " + userData.name + "!";
+
+        document.getElementById("loginMessage").style.color =
+            "green";
+    }
+
+};
+
+</script>
