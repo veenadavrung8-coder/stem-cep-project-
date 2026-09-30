@@ -1,3 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>STEM Education Support</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #f4f8fc;
+    color: #222;
+}
+
+nav {
+    background: #0b1f3a;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.menu-btn {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1976d2, #512da8);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 19px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: white;
+    color: #1976d2;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 50px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section-title {
+    text-align: center;
+    color: #0b1f3a;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.card h3 {
+    color: #1976d2;
+    margin-bottom: 10px;
+}
+
+.tools {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.tool {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.tool a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #1976d2;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-box {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.login-box input {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 10px;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#loginMessage {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+footer {
+    background: #0b1f3a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #0b1f3a;
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .cards,
+    .tools {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">STEM Support</div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" onclick="closeMenu()">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#tools" onclick="closeMenu()">Tools</a></li>
+        <li><a href="#resources" onclick="closeMenu()">Resources</a></li>
+        <li><a href="#login" onclick="closeMenu()">Login</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <h1>Learn. Explore. Create.</h1>
+    <p>STEM Education Support Using Free Digital Tools</p>
+    <a href="#tools" class="btn">Explore Tools</a>
+</section>
+
+<section id="about">
+    <h2 class="section-title">About STEM</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🔬 Science</h3>
+            <p>
+                Explore science concepts through experiments,
+                simulations and interactive learning.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>💻 Technology</h3>
+            <p>
+                Learn digital skills and discover useful
+                technology tools for education.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📐 Mathematics</h3>
+            <p>
+                Understand mathematical concepts using
+                graphs, activities and interactive tools.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="tools">
+    <h2 class="section-title">Free Digital Tools</h2>
+
+    <div class="tools">
+
+        <div class="tool">
+            <h3>📊 GeoGebra</h3>
+            <p>Interactive mathematics and graphing tools.</p>
+            <a href="https://www.geogebra.org/" target="_blank">
+                Open GeoGebra →
+            </a>
+        </div>
+
+        <div class="tool">
+            <h3>🎨 Canva</h3>
+            <p>Create educational presentations and designs.</p>
+            <a href="https://www.canva.com/" target="_blank">
+                Open Canva →
+            </a>
+        </div>
+
+        <div class="tool">
+            <h3>🧪 PhET</h3>
+            <p>Free interactive science and mathematics simulations.</p>
+            <a href="https://phet.colorado.edu/" target="_blank">
+                Open PhET →
+            </a>
+        </div>
+
+        <div class="tool">
+            <h3>💡 Scratch</h3>
+            <p>Learn programming by creating interactive projects.</p>
+            <a href="https://scratch.mit.edu/" target="_blank">
+                Open Scratch →
+            </a>
+        </div>
+
+        <div class="tool">
+            <h3>📈 Google Sheets</h3>
+            <p>Organize data and create simple charts.</p>
+            <a href="https://sheets.google.com/" target="_blank">
+                Open Google Sheets →
+            </a>
+        </div>
+
+        <div class="tool">
+            <h3>📚 Khan Academy</h3>
+            <p>Free lessons and practice for different subjects.</p>
+            <a href="https://www.khanacademy.org/" target="_blank">
+                Open Khan Academy →
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<section id="resources">
+    <h2 class="section-title">Learning Resources</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>📖 Study Materials</h3>
+            <p>Find useful digital resources for STEM learning.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎥 Interactive Learning</h3>
+            <p>Use simulations and digital activities to understand concepts.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚀 Project Ideas</h3>
+            <p>Explore creative STEM projects and activities.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="login">
+    <h2 class="section-title">Student Login</h2>
+
+    <div class="login-box">
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter your name"
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+        >
+
+        <button onclick="loginUser()">Login</button>
+
+        <div id="loginMessage"></div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 STEM Education Support</p>
+    <p>Learn • Explore • Create</p>
+</footer>
+
 <script>
 
 function toggleMenu() {
@@ -8,9 +387,6 @@ function closeMenu() {
     document.getElementById("navMenu").classList.remove("show");
 }
 
-
-/* LOGIN AND SAVE USER DATA */
-
 function loginUser() {
 
     let name = document.getElementById("username").value.trim();
@@ -18,16 +394,10 @@ function loginUser() {
     let message = document.getElementById("loginMessage");
 
     if (name === "" || email === "") {
-
-        message.innerHTML =
-            "⚠️ Please enter your name and email.";
-
+        message.innerHTML = "⚠️ Please enter your name and email.";
         message.style.color = "red";
-
         return;
     }
-
-    /* Save user information */
 
     let userData = {
         name: name,
@@ -35,25 +405,16 @@ function loginUser() {
         loginTime: new Date().toLocaleString()
     };
 
-    localStorage.setItem(
-        "stemUser",
-        JSON.stringify(userData)
-    );
+    localStorage.setItem("stemUser", JSON.stringify(userData));
 
     message.innerHTML =
         "✅ Welcome, " + name + "! Your data has been saved.";
 
     message.style.color = "green";
 
-    /* Clear input boxes */
-
     document.getElementById("username").value = "";
     document.getElementById("email").value = "";
-
 }
-
-
-/* CHECK IF USER IS ALREADY SAVED */
 
 window.onload = function() {
 
@@ -66,10 +427,11 @@ window.onload = function() {
         document.getElementById("loginMessage").innerHTML =
             "👋 Welcome back, " + userData.name + "!";
 
-        document.getElementById("loginMessage").style.color =
-            "green";
+        document.getElementById("loginMessage").style.color = "green";
     }
-
 };
 
 </script>
+
+</body>
+</html>
